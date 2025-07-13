@@ -2,6 +2,7 @@ package engineer.monsters;
 
 import static engineer.BasicMod.imagePath;
 import static engineer.BasicMod.makeID;
+import static engineer.util.GeneralUtils.makeGreen;
 import static engineer.util.GeneralUtils.removePrefix;
 
 import java.util.function.Consumer;
@@ -48,12 +49,12 @@ public abstract class Automaton extends AbstractMonster {
 
         this.program = program;
         this.buttons = new AutomatonButton[] {
-            new AutomatonButton("activate", "Run " + this.name, () -> activatedThisTurn ? "Already Activated" : "1 [E] NL " + program.repr(), () -> {
+            new AutomatonButton("activate", "Run | 1 [E]", () -> (activatedThisTurn ? "Already activated." : "Activate " + makeGreen(this.name) + " NL NL " + program.repr()), () -> {
                 if (EnergyPanel.totalCount > 0 && this.activate(false)) {
                     AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
                 }
             }),
-            new AutomatonButton("remove", "Kill "+  this.name, () -> "1 [E]", () -> {
+            new AutomatonButton("remove", "Remove | 1 [E]", () -> ("Kill " + makeGreen(this.name)), () -> {
                 if (EnergyPanel.totalCount > 0) {
                     this.die();
                     AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));

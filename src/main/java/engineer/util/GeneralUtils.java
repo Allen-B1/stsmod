@@ -1,5 +1,7 @@
 package engineer.util;
 
+import java.util.Arrays;
+
 public class GeneralUtils {
     public static String arrToString(Object[] arr) {
         if (arr == null)
@@ -17,5 +19,9 @@ public class GeneralUtils {
 
     public static String removePrefix(String ID) {
         return ID.substring(ID.indexOf(":") + 1);
+    }
+
+    public static String makeGreen(String text) {
+        return "[#00ff00]" + String.join(" [#00ff00]", Arrays.asList(text.split(" "))) + "[]";
     }
 }

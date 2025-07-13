@@ -1,7 +1,7 @@
 {
   "${modID}:build": {
     "NAME": "Build",
-    "DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Consume the Program.",
+    "DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Consume the [#00ff00]Program[].",
     "EXTENDED_DESCRIPTION": [
       "You can put more text in here.",
       "If you need to use it for stuff.",
@@ -10,7 +10,7 @@
   },
   "${modID}:direct" : {
     "NAME": "Direct",
-    "DESCRIPTION": "Program an ${modID}:Attack 6."
+    "DESCRIPTION": "[#00ff00]Program[] ${modID}:Attack 6."
   },
 
   "${modID}:download": {
@@ -19,12 +19,12 @@
   },
   "${modID}:frenzy": {
     "NAME": "Mass Production",
-    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL ${modID}:Consume the Program."
+    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL ${modID}:Consume the [#00ff00]Program[]."
   },
 
   "${modID}:attackattack" : {
     "NAME": "Attack and Attack",
-    "DESCRIPTION": "Deal !D! damage. NL Program an ${modID}:Attack !M!."
+    "DESCRIPTION": "Deal !D! damage. NL [#00ff00]Program[] ${modID}:Attack !M!."
   },
   "${modID}:tazer": {
     "NAME": "Tazer",
@@ -32,13 +32,13 @@
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "!B! Block. NL Program a ${modID}:Defense 5.",
-    "UPGRADE_DESCRIPTION": "!B! Block. NL Program a ${modID}:Defense 5. NL Program a ${modID}:Weaken."
+    "DESCRIPTION": "!B! Block. NL [#00ff00]Program[] ${modID}:Defense 5.",
+    "UPGRADE_DESCRIPTION": "!B! Block. NL [#00ff00]Program[] ${modID}:Defense 5. NL [#00ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {
     "NAME": "Fortress",
-    "DESCRIPTION": "Program ${modID}:Defense 12. Build 1 ${modID}:Steel."
+    "DESCRIPTION": "[#00ff00]Program[] ${modID}:Defense 12. Build 1 ${modID}:Steel."
   },
   "${modID}:jack": {
     "NAME": "Jack of all Trades",

@@ -10,7 +10,7 @@
     "NAME": "Blueprint",
     "FLAVOR": "Never hurts to come prepared.",
     "DESCRIPTIONS": [
-      "At the start of each combat, #yProgram an #yAttack #b6."
+      "At the start of each combat, [#00ff00]Program[] an #yAttack #b6."
     ]
   }
 }

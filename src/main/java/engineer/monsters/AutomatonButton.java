@@ -27,7 +27,7 @@ public class AutomatonButton extends ClickableUIElement {
 
     @Override
     protected void onHover() {
-        TipHelper.renderGenericTip(this.x, this.y - 32f * Settings.scale, text, description.get());
+        TipHelper.renderGenericTip(this.x + 48f * Settings.scale, this.y - 32f * Settings.scale, text, description.get());
     }
 
     @Override

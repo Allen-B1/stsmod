@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
+import basemod.BaseMod;
 import engineer.BasicMod;
 import engineer.EngineerCharacter;
 import engineer.Program;
@@ -25,7 +26,7 @@ public class FrenzyCard extends EngineerCard {
 
     public FrenzyCard() {
         super(ID, cost, type, rarity, target);
-        baseMagicNumber = 3;
+        baseMagicNumber = magicNumber = 3;
         upgradedMagicNumber = true;
     }
 
@@ -37,6 +38,8 @@ public class FrenzyCard extends EngineerCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster enemy) {
+        BaseMod.logger.info("magicNumber : " + magicNumber + " / " + baseMagicNumber);
+
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
 

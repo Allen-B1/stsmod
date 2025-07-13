@@ -23,7 +23,7 @@ public class AttackAttackCard extends EngineerCard {
     public AttackAttackCard() {
         super(ID, cost, type, rarity, target);
         baseDamage = 7;
-        baseMagicNumber = 4;
+        baseMagicNumber = magicNumber = 4;
         upgradedDamage = true;
         upgradedMagicNumber = true;
     }

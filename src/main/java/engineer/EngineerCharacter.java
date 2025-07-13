@@ -301,7 +301,6 @@ public class EngineerCharacter extends CustomPlayer {
 
     @Override
     public void render(final SpriteBatch sb) {
-        BaseMod.logger.info("render");
         super.render(sb);
 
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
@@ -311,7 +310,6 @@ public class EngineerCharacter extends CustomPlayer {
 
     @Override
     public void update() {
-        BaseMod.logger.info("update");
         super.update();
 
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {

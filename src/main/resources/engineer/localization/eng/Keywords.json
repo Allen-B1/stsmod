@@ -2,7 +2,7 @@
   {
     "PROPER_NAME": "Steel",
     "NAMES": ["steel"],
-    "DESCRIPTION": "8HP/16HP Automaton. Heals 2HP at the start of each turn."
+    "DESCRIPTION": "8HP/16HP Automaton. NL Heals 2HP at the start of each turn."
   },
   {
     "PROPER_NAME": "Plastic",
@@ -23,17 +23,17 @@
   {
     "PROPER_NAME": "Attack (Command)",
     "NAMES": ["attack", "Attack"],
-    "DESCRIPTION": "Attack a random enemy for %bX."
+    "DESCRIPTION": "Attack a random enemy for #bX."
   },
   {
     "PROPER_NAME": "Defense (Command)",
     "NAMES": ["defense", "Defense"],
-    "DESCRIPTION": "Gain $bX Block. NL NL Death: Allies gain %bX Block. "
+    "DESCRIPTION": "Gain #bX Block. NL #yDeath: Allies gain #bX Block. "
   },
   {
     "PROPER_NAME": "Spray (Command)",
     "NAMES": ["spray", "Spray"],
-    "DESCRIPTION": "Attack all enemies for %bX."
+    "DESCRIPTION": "Attack all enemies for #bX."
   },
   {
     "PROPER_NAME": "Weaken (Command)",

@@ -19,7 +19,7 @@ public class AutomatonButton extends ClickableUIElement {
     private Runnable onClick;
 
     public AutomatonButton(String icon, String text, Supplier<String> description, Runnable onclick) {
-        super(new Texture(imagePath(icon + ".png")), 0, 0, 96.0f, 96f);
+        super(new Texture(imagePath(icon + ".png")), 0, 0, 24f, 24f);
         this.text = text;
         this.onClick = onclick;
         this.description  = description;

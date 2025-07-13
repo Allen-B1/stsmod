@@ -79,7 +79,7 @@ public abstract class Automaton extends AbstractMonster {
             sb.setColor(Color.RED);
             button.getHitbox().render(sb);
             sb.setColor(Color.WHITE); 
-            sb.draw(button.getImage(), button.getHitbox().x, button.getHitbox().y, 48f, 48f, 96f, 96f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0f, 0, 0, 
+            sb.draw(button.getImage(), button.getHitbox().x, button.getHitbox().y, 0f, 0f, button.getHitbox().width, button.getHitbox().height, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0f, 0, 0, 
                 button.getImage().getWidth(), button.getImage().getHeight(), false, false);
         }
     }

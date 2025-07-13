@@ -5,8 +5,10 @@ import static engineer.BasicMod.makeID;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,8 +17,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.cards.blue.Defend_Blue;
 import com.megacrit.cardcrawl.cards.blue.Strike_Blue;
 import com.megacrit.cardcrawl.cards.green.Neutralize;
@@ -24,6 +29,7 @@ import com.megacrit.cardcrawl.cards.red.Defend_Red;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
@@ -45,7 +51,7 @@ import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostBattleSubscriber;
 import engineer.cards.BuildCard;
 import engineer.cards.DirectCard;
-import engineer.cards.uncommon.FrenzyCard;
+import engineer.cards.common.FrenzyCard;
 import engineer.monsters.Automaton;
 import engineer.powers.ProgrammerPower;
 import engineer.relics.Blueprint;
@@ -331,5 +337,47 @@ public class EngineerCharacter extends CustomPlayer {
         BaseMod.logger.info("clearing automatons");
         automatons = new Automaton[8];
         program = new Program();
+    }
+
+    @Override
+    public void damage(DamageInfo info) {
+        if (!(info.owner instanceof AbstractMonster) || info.type != DamageType.NORMAL) {
+            super.damage(info);
+            return;
+        }
+
+        AbstractMonster source = (AbstractMonster)info.owner;
+        List<AbstractCreature> targets = Arrays.asList(automatons).stream().filter(x -> x != null).collect(Collectors.toList());
+        targets.add(this);
+
+        int[] scores = new int[targets.size()];
+        for (int i = 0; i < targets.size(); i++) {
+            int output = info.output - targets.get(i).currentBlock;
+            if (output >= targets.get(i).currentHealth) {
+                output = targets.get(i).currentHealth;
+                output += (targets.get(i).maxHealth <= 12 ? 3 : targets.get(i).maxHealth / 4); // bonus for killing enemy
+            }
+            if (output < 0) {
+                output = 0;
+            }
+
+            scores[i] = output;
+        }
+
+        int maxScore = -1;
+        int maxScoreIdx = -1;
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] > maxScore) {
+                maxScore = scores[i];
+                maxScoreIdx = i;
+            }
+        }
+
+        if (targets.get(maxScoreIdx) == this) {
+            super.damage(info);
+            return;
+        }
+
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(targets.get(maxScoreIdx), info, AbstractGameAction.AttackEffect.NONE));
     }
 }

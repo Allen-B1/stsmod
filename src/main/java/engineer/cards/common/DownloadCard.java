@@ -10,7 +10,7 @@ import engineer.BasicMod;
 import engineer.EngineerCharacter;
 import engineer.cards.EngineerCard;
 import engineer.monsters.Automaton;
-import engineer.monsters.PlasticAutomaton;
+import engineer.monsters.SteelAutomaton;
 
 public class DownloadCard extends EngineerCard {
     public final static String ID = BasicMod.makeID("download");
@@ -29,7 +29,7 @@ public class DownloadCard extends EngineerCard {
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
 
-            Automaton automaton = new PlasticAutomaton();
+            Automaton automaton = new SteelAutomaton();
             automaton.setProgram(engineer.program.copy(), engineer);
             engineer.addAutomaton(automaton);
         }

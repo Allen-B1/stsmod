@@ -10,9 +10,9 @@
     "DESCRIPTION": "Command. Automaton attacks a random enemy."
   },
   {
-    "PROPER_NAME": "Defend",
-    "NAMES": ["defend"],
-    "DESCRIPTION": "Command. Automaton adds block to all allies."
+    "PROPER_NAME": "Defense",
+    "NAMES": ["defense"],
+    "DESCRIPTION": "Command. Automaton adds block to all other allies."
   },
   {
     "PROPER_NAME": "Spray",

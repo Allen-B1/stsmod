@@ -13,7 +13,7 @@ import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import engineer.cards.EngineerCard;
 import engineer.monsters.Automaton;
-import engineer.monsters.PlasticAutomaton;
+import engineer.monsters.SteelAutomaton;
 import engineer.monsters.WoodenAutomaton;
 import engineer.relics.Blueprint;
 import engineer.util.GeneralUtils;
@@ -86,7 +86,7 @@ public class BasicMod implements
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
         BaseMod.addMonster(WoodenAutomaton.ID, () -> new WoodenAutomaton());
-        BaseMod.addMonster(PlasticAutomaton.ID, () -> new PlasticAutomaton());
+        BaseMod.addMonster(SteelAutomaton.ID, () -> new SteelAutomaton());
     }
 
     @Override

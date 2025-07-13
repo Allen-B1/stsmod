@@ -38,7 +38,7 @@ public class Program {
 
         @Override
         public String repr() {
-            return "Attack " + Integer.toString(dmg);
+            return "Attack #b" + Integer.toString(dmg);
         }
     }
 
@@ -61,21 +61,21 @@ public class Program {
 
         @Override
         public String repr() {
-            return "Spray " + Integer.toString(dmg);
+            return "Spray #b" + Integer.toString(dmg);
         }
     }
 
-    public static class DefendCommand implements Command {
+    public static class DefenseCommand implements Command {
         public final int block;
 
-        public DefendCommand(int block) {
+        public DefenseCommand(int block) {
             this.block = block;
         }
 
         @Override
         public void execute(Automaton source, EngineerCharacter player) {
             for (Automaton auto : player.automatons) {
-                if (auto != null) {
+                if (auto != null && auto != source) {
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(auto, block));
                 }
                 
@@ -86,7 +86,25 @@ public class Program {
 
         @Override
         public String repr() {
-            return "Defend " + Integer.toString(block);
+            return "Defense #b" + Integer.toString(block);
+        }
+    }
+
+    public static class BlockCommand implements Command {
+        public final int block;
+
+        public BlockCommand(int block) {
+            this.block = block;
+        }
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(source, block));
+        }
+
+        @Override
+        public String repr() {
+            return "Block #b" + Integer.toString(block);
         }
     }
 

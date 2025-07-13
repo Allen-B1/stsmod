@@ -31,7 +31,7 @@ public class DefenseSystemCard extends EngineerCard {
 
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
-            engineer.program.add(new Program.DefendCommand(5));
+            engineer.program.add(new Program.DefenseCommand(5));
             if (upgraded) {
                 engineer.program.add(new Program.WeakenCommand());
             }

@@ -1,7 +1,7 @@
 {
   "${modID}:build": {
     "NAME": "Build",
-    "DESCRIPTION": "Build a Wooden Automaton. NL ${modID}:Consume the Program.",
+    "DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Consume the Program.",
     "EXTENDED_DESCRIPTION": [
       "You can put more text in here.",
       "If you need to use it for stuff.",
@@ -15,12 +15,12 @@
 
   "${modID}:download": {
     "NAME": "Download",
-    "DESCRIPTION": "Build a Plastic Automaton."
+    "DESCRIPTION": "Build 1 ${modID}:Plastic."
   },
-  "${modID}:fortress": {
-    "NAME": "Fortress",
-    "DESCRIPTION": "Build a 9HP Iron Automaton.",
-    "UPGRADE_DESCRIPTION": "Build a 12HP Iron Automaton."
+  "${modID}:frenzy": {
+    "NAME": "Mass Production",
+    "DESCRIPTION": "Build 3 ${modID}:Plastic. NL ${modID}:Consume the Program.",
+    "UPGRADE_DESCRIPTION": "Build 4 ${modID}:Plastic. NL ${modID}:Consume the Program."
   },
 
   "${modID}:attackattack" : {
@@ -35,13 +35,17 @@
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "5 Block. NL Program a ${modID}:Defend 5.",
-    "UPGRADE_DESCRIPTION": "5 Block. NL Program a ${modID}:Defend 5. NL Program a ${modID}:Weaken."
+    "DESCRIPTION": "5 Block. NL Program a ${modID}:Defense 5.",
+    "UPGRADE_DESCRIPTION": "5 Block. NL Program a ${modID}:Defense 5. NL Program a ${modID}:Weaken."
   },
 
-  "${modID}:frenzy": {
-    "NAME": "Frenzied Construction",
-    "DESCRIPTION": "Build 3 Plastic Automata. NL ${modID}:Consume the Program. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Build 3 Plastic Automata. NL ${modID}:Consume the Program."
+  "${modID}:fortress": {
+    "NAME": "Fortress",
+    "DESCRIPTION": "Program ${modID}:Block 12. Build 1 ${modID}:Steel."
+  },
+  "${modID}:jack": {
+    "NAME": "Jack of all Trades",
+    "DESCRIPTION": "Build 1 ${modID}:Plastic. Build 1 ${modID}:Wooden. Build 1 ${modID}:Steel. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. Build 1 ${modID}:Wooden. Build 1 ${modID}:Steel."
   }
 }

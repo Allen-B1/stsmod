@@ -1,0 +1,131 @@
+package engineer;
+
+import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.powers.WeakPower;
+
+import engineer.monsters.Automaton;
+
+public class Program {
+    public static interface Command {
+        void execute(Automaton source, EngineerCharacter player);
+        String repr();
+    }
+
+    public static class AttackCommand implements Command {
+        public final int dmg;
+
+        public AttackCommand(int dmg) {
+            this.dmg = dmg;
+        }
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            AbstractMonster target = AbstractDungeon.getRandomMonster();
+            DamageInfo info = new DamageInfo(source, dmg, DamageInfo.DamageType.NORMAL);
+            info.applyPowers(source, target);
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info));
+        }
+
+        @Override
+        public String repr() {
+            return "Attack " + Integer.toString(dmg);
+        }
+    }
+
+    public static class SprayCommand implements Command {
+        public final int dmg;
+
+        public SprayCommand(int dmg) {
+            this.dmg = dmg;
+        }
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            MonsterGroup monsters = AbstractDungeon.getMonsters();
+            for (AbstractMonster target : monsters.monsters) {
+                DamageInfo info = new DamageInfo(source, dmg, DamageInfo.DamageType.NORMAL);
+                info.applyPowers(source, target);
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info));
+            }
+        }
+
+        @Override
+        public String repr() {
+            return "Spray " + Integer.toString(dmg);
+        }
+    }
+
+    public static class DefendCommand implements Command {
+        public final int block;
+
+        public DefendCommand(int block) {
+            this.block = block;
+        }
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            for (Automaton auto : player.automatons) {
+                if (auto != null) {
+                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(auto, block));
+                }
+                
+            }
+
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, block));
+        }
+
+        @Override
+        public String repr() {
+            return "Defend " + Integer.toString(block);
+        }
+    }
+
+    public static class WeakenCommand implements Command {
+        public WeakenCommand() {}
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            MonsterGroup monsters = AbstractDungeon.getMonsters();
+            for (AbstractMonster target : monsters.monsters) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, source, 
+                    new WeakPower(target, 1, false)
+                ));
+            }
+        }
+
+        @Override
+        public String repr() {
+            return "Weaken";
+        }
+    }
+
+    public ArrayList<Command> commands;
+
+    public Program() {
+        commands = new ArrayList<Command>();
+    }
+
+    public void add(Command command) {
+        commands.add(command);
+    }
+
+    public Program copy() {
+        Program program = new Program();
+        program.commands.addAll(this.commands);
+        return program;
+    }
+
+    public String repr() {
+        return String.join(" NL ", this.commands.stream().map(x -> x.repr()).collect(Collectors.toList()));
+    }
+}

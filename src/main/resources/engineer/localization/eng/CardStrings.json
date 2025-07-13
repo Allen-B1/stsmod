@@ -1,0 +1,47 @@
+{
+  "${modID}:build": {
+    "NAME": "Build",
+    "DESCRIPTION": "Build a Wooden Automaton. NL ${modID}:Consume the Program.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  "${modID}:direct" : {
+    "NAME": "Direct",
+    "DESCRIPTION": "Program an ${modID}:Attack 6."
+  },
+
+  "${modID}:download": {
+    "NAME": "Download",
+    "DESCRIPTION": "Build a Plastic Automaton."
+  },
+  "${modID}:fortress": {
+    "NAME": "Fortress",
+    "DESCRIPTION": "Build a 9HP Iron Automaton.",
+    "UPGRADE_DESCRIPTION": "Build a 12HP Iron Automaton."
+  },
+
+  "${modID}:attackattack" : {
+    "NAME": "Attack and Attack",
+    "DESCRIPTION": "Deal 6 damage. NL Program an ${modID}:Attack 4.",
+    "UPGRADE_DESCRIPTION": "Deal 8 damage. NL Program an ${modID}:Attack 6."
+  },
+  "${modID}:tazer": {
+    "NAME": "Tazer",
+    "DESCRIPTION": "Deal 5 damage. NL Apply 1 Weak. NL Apply 1 Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Deal 7 damage. NL Apply 2 Weak. NL Apply 2 Vulnerable."
+  },
+  "${modID}:defensesystem" : {
+    "NAME": "Defense System",
+    "DESCRIPTION": "5 Block. NL Program a ${modID}:Defend 5.",
+    "UPGRADE_DESCRIPTION": "5 Block. NL Program a ${modID}:Defend 5. NL Program a ${modID}:Weaken."
+  },
+
+  "${modID}:frenzy": {
+    "NAME": "Frenzied Construction",
+    "DESCRIPTION": "Build 3 Plastic Automata. NL ${modID}:Consume the Program. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Build 3 Plastic Automata. NL ${modID}:Consume the Program."
+  }
+}

@@ -25,6 +25,14 @@ public class FrenzyCard extends EngineerCard {
 
     public FrenzyCard() {
         super(ID, cost, type, rarity, target);
+        baseMagicNumber = 3;
+        upgradedMagicNumber = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        upgradeMagicNumber(1);
     }
 
     @Override
@@ -33,7 +41,7 @@ public class FrenzyCard extends EngineerCard {
             EngineerCharacter engineer = (EngineerCharacter)player;
 
             Program program = engineer.consumeProgram();
-            for (int i = 0; i < (upgraded ? 4 : 3); i++) {
+            for (int i = 0; i < magicNumber; i++) {
                 Automaton automaton = new PlasticAutomaton();
                 automaton.setProgram(program, engineer);    
                 engineer.addAutomaton(automaton);

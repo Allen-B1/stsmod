@@ -1,28 +1,44 @@
 [
   {
+    "PROPER_NAME": "Steel",
+    "NAMES": ["steel"],
+    "DESCRIPTION": "8HP/16HP Automaton. Heals 2HP at the start of each turn."
+  },
+  {
+    "PROPER_NAME": "Plastic",
+    "NAMES": ["plastic"],
+    "DESCRIPTION": "4HP Automaton."
+  },
+  {
+    "PROPER_NAME": "Wooden",
+    "NAMES": ["wooden"],
+    "DESCRIPTION": "6HP Automaton."
+  },
+
+  {
     "PROPER_NAME": "Consume",
     "NAMES": ["consume"],
     "DESCRIPTION": "Remove all commands from the Program."
   },
   {
-    "PROPER_NAME": "Attack",
-    "NAMES": ["attack"],
-    "DESCRIPTION": "Command. Automaton attacks a random enemy."
+    "PROPER_NAME": "Attack (Command)",
+    "NAMES": ["attack", "Attack"],
+    "DESCRIPTION": "Attack a random enemy for %bX."
   },
   {
-    "PROPER_NAME": "Defense",
-    "NAMES": ["defense"],
-    "DESCRIPTION": "Command. Automaton adds block to all other allies."
+    "PROPER_NAME": "Defense (Command)",
+    "NAMES": ["defense", "Defense"],
+    "DESCRIPTION": "Gain $bX Block. NL NL Death: Allies gain %bX Block. "
   },
   {
-    "PROPER_NAME": "Spray",
-    "NAMES": ["spray"],
-    "DESCRIPTION": "Command. Automaton attacks all enemies."
+    "PROPER_NAME": "Spray (Command)",
+    "NAMES": ["spray", "Spray"],
+    "DESCRIPTION": "Attack all enemies for %bX."
   },
   {
-    "PROPER_NAME": "Weaken",
-    "NAMES": ["weaken"],
-    "DESCRIPTION": "Command. Automaton applies 1 Weak to all enemies."
+    "PROPER_NAME": "Weaken (Command)",
+    "NAMES": ["weaken", "Weaken"],
+    "DESCRIPTION": "Apply 1 Weak to all enemies."
   },
   {
     "PROPER_NAME": "This is displayed in the tooltip.",

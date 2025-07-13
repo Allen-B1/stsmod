@@ -23,11 +23,12 @@ public class DefenseSystemCard extends EngineerCard {
 
     public DefenseSystemCard() {
         super(ID, cost, type, rarity, target);
+        baseBlock = 5;
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster enemy) {
-        addToBot(new GainBlockAction(player, 5));
+        addToBot(new GainBlockAction(player, block));
 
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;

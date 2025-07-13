@@ -20,12 +20,23 @@ public class TazerCard extends EngineerCard {
 
     public TazerCard() {
         super(ID, cost, type, rarity, target);
+        baseDamage = 7;
+        baseMagicNumber = 1;
+        upgradedDamage = true;
+        upgradedMagicNumber = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster enemy) {
-        addToBot(new DamageAction(enemy, new DamageInfo(player, upgraded ? 7 : 5, DamageInfo.DamageType.NORMAL)));
-        addToBot(new ApplyPowerAction(enemy, player, new WeakPower(enemy, upgraded ? 2 : 1, false)));
-        addToBot(new ApplyPowerAction(enemy, player, new VulnerablePower(enemy, upgraded ? 2 : 1, false)));
+        addToBot(new DamageAction(enemy, new DamageInfo(player, damage, DamageInfo.DamageType.NORMAL)));
+        addToBot(new ApplyPowerAction(enemy, player, new WeakPower(enemy, magicNumber, false)));
+        addToBot(new ApplyPowerAction(enemy, player, new VulnerablePower(enemy, magicNumber, false)));
     }
 }

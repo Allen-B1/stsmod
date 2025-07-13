@@ -21,11 +21,13 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import basemod.BaseMod;
 import engineer.EngineerCharacter;
 import engineer.Program;
+import engineer.Program.Command;
 
 public abstract class Automaton extends AbstractMonster {
     protected Program program;
     protected Consumer<Automaton> onDeath;
-    protected AutomatonButton button;
+
+    protected AutomatonButton[] buttons = new AutomatonButton[0];
 
     public Automaton(String id, String name, int health) {
         super(name, id, health, 0f, 0f, 128f, 128f, imagePath("monsters/" + removePrefix(id) + ".png"));
@@ -35,41 +37,47 @@ public abstract class Automaton extends AbstractMonster {
         this.onDeath = onDeath;
     }
 
-    public void setProgram(Program program, EngineerCharacter player) {
+    EngineerCharacter owner; // unavoidable
+    public void setProgram(Program program, EngineerCharacter owner) {
         if (program == null) {
             BaseMod.logger.debug("program = null?");
             return;
         }
 
         this.program = program;
-        this.button = new AutomatonButton(this.name, program.repr(), () -> {
-            if (EnergyPanel.totalCount > 0) {
-                AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
-                this.activate(player);
-            }
-        });
-    }
-
-    public void activate(EngineerCharacter player) {
-        for (Program.Command cmd : program.commands) {
-            cmd.execute(this, player);  
-        }
+        this.buttons = new AutomatonButton[] {
+            new AutomatonButton("activate", "Run " + this.name, () -> activatedThisTurn ? "Already Activated" : "1 [E] NL" + program.repr(), () -> {
+                if (EnergyPanel.totalCount > 0 && this.activate(false)) {
+                    AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
+                }
+            }),
+            new AutomatonButton("remove", "Kill "+  this.name, () -> "1 [E]", () -> {
+                if (EnergyPanel.totalCount > 0) {
+                    this.die();
+                    AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
+                }
+            })
+        };
     }
     
     @Override
     public void render(SpriteBatch sb) {
         super.render(sb);
 
-        if (this.button != null) {
-            this.button.setX(this.drawX + 96 * Settings.scale);
-            this.button.setY(this.drawY);
-            button.getHitbox().x = this.drawX + 64 * Settings.scale;
-            button.getHitbox().y = this.drawY - 64 * Settings.scale;
+        for (int i = 0; i < this.buttons.length; i++) {
+            AutomatonButton button = buttons[i];
+
+            float x = this.drawX + 64 * Settings.scale, 
+                y = this.drawY - 64 * Settings.scale + 128 * Settings.scale * i;
+            button.setX(x);
+            button.setY(y);
+            button.getHitbox().x = x;
+            button.getHitbox().y = y;
 //            BaseMod.logger.info(button.getHitbox().width);
 //            BaseMod.logger.info(button.getHitbox().height);
 
             sb.setColor(Color.RED);
-            this.button.getHitbox().render(sb);
+            button.getHitbox().render(sb);
             sb.setColor(Color.WHITE); 
             sb.draw(button.getImage(), button.getHitbox().x, button.getHitbox().y, 48f, 48f, 96f, 96f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0f, 0, 0, 
                 button.getImage().getWidth(), button.getImage().getHeight(), false, false);
@@ -80,8 +88,8 @@ public abstract class Automaton extends AbstractMonster {
     public void update() {
         super.update();
 
-        if (this.button != null) {
-            this.button.update();
+        for (AutomatonButton button : buttons) {
+            button.update();
         }
     }
 
@@ -89,6 +97,10 @@ public abstract class Automaton extends AbstractMonster {
     public void die() {
         super.die(false);
         this.onDeath.accept(this);
+
+        for (Command cmd : program.commands) {
+            cmd.onDeath(this, owner);
+        }
     }
 
     @Override
@@ -96,4 +108,25 @@ public abstract class Automaton extends AbstractMonster {
 
     @Override
     public void takeTurn() {}
+
+    protected boolean activatedThisTurn = false;
+
+    public boolean activate(boolean force) {
+        if (!activatedThisTurn || force) {
+            for (Program.Command cmd : program.commands) {
+                cmd.execute(this, owner);  
+            }
+
+            activatedThisTurn = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void applyEndOfTurnTriggers() {
+        super.applyEndOfTurnTriggers();
+        activatedThisTurn = false;
+    }
 }

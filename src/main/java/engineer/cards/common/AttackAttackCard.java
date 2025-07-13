@@ -22,15 +22,26 @@ public class AttackAttackCard extends EngineerCard {
 
     public AttackAttackCard() {
         super(ID, cost, type, rarity, target);
+        baseDamage = 7;
+        baseMagicNumber = 4;
+        upgradedDamage = true;
+        upgradedMagicNumber = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        upgradeDamage(2);
+        upgradeMagicNumber(2);
     }
     
     @Override
     public void use(AbstractPlayer player, AbstractMonster enemy) {
-        addToBot(new DamageAction(enemy, new DamageInfo(player, upgraded ? 8 : 6, DamageInfo.DamageType.NORMAL)));
+        addToBot(new DamageAction(enemy, new DamageInfo(player, damage, DamageInfo.DamageType.NORMAL)));
         
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
-            engineer.program.add(new Program.AttackCommand(upgraded ? 6 : 4));
+            engineer.program.add(new Program.AttackCommand(magicNumber));
         }
     }
 }

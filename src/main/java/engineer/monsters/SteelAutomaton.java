@@ -11,8 +11,8 @@ public class SteelAutomaton extends Automaton {
     }
 
     @Override
-    public void applyEndOfTurnTriggers() {
-        super.applyEndOfTurnTriggers();
+    public void applyStartOfTurnPowers() {
+        super.applyStartOfTurnPowers();
 
         this.currentHealth += 2;
         if (this.currentHealth >= this.maxHealth) {

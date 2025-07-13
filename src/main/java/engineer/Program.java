@@ -18,6 +18,7 @@ import engineer.monsters.Automaton;
 public class Program {
     public static interface Command {
         void execute(Automaton source, EngineerCharacter player);
+        default void onDeath(Automaton source, EngineerCharacter player) {}
         String repr();
     }
 
@@ -74,11 +75,15 @@ public class Program {
 
         @Override
         public void execute(Automaton source, EngineerCharacter player) {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(source, block));
+        }
+
+        @Override
+        public void onDeath(Automaton source, EngineerCharacter player) {
             for (Automaton auto : player.automatons) {
                 if (auto != null && auto != source) {
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(auto, block));
                 }
-                
             }
 
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, block));
@@ -87,24 +92,6 @@ public class Program {
         @Override
         public String repr() {
             return "Defense #b" + Integer.toString(block);
-        }
-    }
-
-    public static class BlockCommand implements Command {
-        public final int block;
-
-        public BlockCommand(int block) {
-            this.block = block;
-        }
-
-        @Override
-        public void execute(Automaton source, EngineerCharacter player) {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(source, block));
-        }
-
-        @Override
-        public String repr() {
-            return "Block #b" + Integer.toString(block);
         }
     }
 

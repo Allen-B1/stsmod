@@ -19,33 +19,30 @@
   },
   "${modID}:frenzy": {
     "NAME": "Mass Production",
-    "DESCRIPTION": "Build 3 ${modID}:Plastic. NL ${modID}:Consume the Program.",
-    "UPGRADE_DESCRIPTION": "Build 4 ${modID}:Plastic. NL ${modID}:Consume the Program."
+    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL ${modID}:Consume the Program."
   },
 
   "${modID}:attackattack" : {
     "NAME": "Attack and Attack",
-    "DESCRIPTION": "Deal 6 damage. NL Program an ${modID}:Attack 4.",
-    "UPGRADE_DESCRIPTION": "Deal 8 damage. NL Program an ${modID}:Attack 6."
+    "DESCRIPTION": "Deal !D! damage. NL Program an ${modID}:Attack !M!."
   },
   "${modID}:tazer": {
     "NAME": "Tazer",
-    "DESCRIPTION": "Deal 5 damage. NL Apply 1 Weak. NL Apply 1 Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Deal 7 damage. NL Apply 2 Weak. NL Apply 2 Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M! Vulnerable."
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "5 Block. NL Program a ${modID}:Defense 5.",
-    "UPGRADE_DESCRIPTION": "5 Block. NL Program a ${modID}:Defense 5. NL Program a ${modID}:Weaken."
+    "DESCRIPTION": "!B! Block. NL Program a ${modID}:Defense 5.",
+    "UPGRADE_DESCRIPTION": "!B! Block. NL Program a ${modID}:Defense 5. NL Program a ${modID}:Weaken."
   },
 
   "${modID}:fortress": {
     "NAME": "Fortress",
-    "DESCRIPTION": "Program ${modID}:Block 12. Build 1 ${modID}:Steel."
+    "DESCRIPTION": "Program ${modID}:Defense 12. Build 1 ${modID}:Steel."
   },
   "${modID}:jack": {
     "NAME": "Jack of all Trades",
-    "DESCRIPTION": "Build 1 ${modID}:Plastic. Build 1 ${modID}:Wooden. Build 1 ${modID}:Steel. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. Build 1 ${modID}:Wooden. Build 1 ${modID}:Steel."
+    "DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel."
   }
 }

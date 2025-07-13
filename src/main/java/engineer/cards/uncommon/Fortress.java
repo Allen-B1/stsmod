@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import engineer.EngineerCharacter;
 import engineer.Program;
-import engineer.Program.BlockCommand;
 import engineer.cards.EngineerCard;
 import engineer.monsters.Automaton;
 import engineer.monsters.SteelAutomaton;
@@ -28,7 +27,7 @@ public class Fortress extends EngineerCard {
     public void use(AbstractPlayer player, AbstractMonster monster) {
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
-            engineer.program.add(new Program.BlockCommand(12));
+            engineer.program.add(new Program.DefenseCommand(12));
 
             Automaton auto = new SteelAutomaton();
             auto.setProgram(engineer.consumeProgram(), engineer);

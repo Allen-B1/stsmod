@@ -2,6 +2,9 @@ package engineer.monsters;
 
 import static engineer.BasicMod.makeID;
 
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
 public class SteelAutomaton extends Automaton {
     public final static String ID = makeID("steel");
 
@@ -14,9 +17,6 @@ public class SteelAutomaton extends Automaton {
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
 
-        this.currentHealth += 2;
-        if (this.currentHealth >= this.maxHealth) {
-            this.currentHealth = this.maxHealth;
-        }
+        AbstractDungeon.actionManager.addToBottom(new HealAction(this, this, 2));
     }
 }

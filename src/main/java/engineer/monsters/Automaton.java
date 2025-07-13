@@ -39,6 +39,8 @@ public abstract class Automaton extends AbstractMonster {
 
     EngineerCharacter owner; // unavoidable
     public void setProgram(Program program, EngineerCharacter owner) {
+        this.owner = owner;
+        
         if (program == null) {
             BaseMod.logger.debug("program = null?");
             return;
@@ -46,7 +48,7 @@ public abstract class Automaton extends AbstractMonster {
 
         this.program = program;
         this.buttons = new AutomatonButton[] {
-            new AutomatonButton("activate", "Run " + this.name, () -> activatedThisTurn ? "Already Activated" : "1 [E] NL" + program.repr(), () -> {
+            new AutomatonButton("activate", "Run " + this.name, () -> activatedThisTurn ? "Already Activated" : "1 [E] NL " + program.repr(), () -> {
                 if (EnergyPanel.totalCount > 0 && this.activate(false)) {
                     AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
                 }
@@ -68,7 +70,7 @@ public abstract class Automaton extends AbstractMonster {
             AutomatonButton button = buttons[i];
 
             float x = this.drawX + 64 * Settings.scale, 
-                y = this.drawY - 64 * Settings.scale + 128 * Settings.scale * i;
+                y = this.drawY + 64 * Settings.scale * i;
             button.setX(x);
             button.setY(y);
             button.getHitbox().x = x;

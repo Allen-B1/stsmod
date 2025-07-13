@@ -133,7 +133,7 @@ public class EngineerCharacter extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> relics = new ArrayList<String>();
-        relics.add(BurningBlood.ID);
+        relics.add(Blueprint.ID);
         return relics;
     }
 
@@ -245,7 +245,7 @@ public class EngineerCharacter extends CustomPlayer {
         return false;
     }
 
-    /** Remove Automaton from list. */
+    // Remove Automaton from list.
     private void relinquishAutomaton(Automaton automaton) {
         int i = Arrays.asList(automatons).indexOf(automaton);
         if (i < 0) {
@@ -254,7 +254,7 @@ public class EngineerCharacter extends CustomPlayer {
 
         automatons[i] = null;
     }
-
+ 
     @Override
     public void updatePowers() {
         super.updatePowers();
@@ -286,13 +286,16 @@ public class EngineerCharacter extends CustomPlayer {
 
     @Override
     public void applyEndOfTurnTriggers() {
+        BaseMod.logger.info("apply end of turn triggers");
         super.applyEndOfTurnTriggers();
         eachAuto((auto) -> auto.applyEndOfTurnTriggers());
         eachAuto(auto -> auto.powers.forEach(power -> power.atEndOfRound()));
-  }
+    }
+    
 
     @Override
     public void render(final SpriteBatch sb) {
+        BaseMod.logger.info("render");
         super.render(sb);
 
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
@@ -302,6 +305,7 @@ public class EngineerCharacter extends CustomPlayer {
 
     @Override
     public void update() {
+        BaseMod.logger.info("update");
         super.update();
 
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {

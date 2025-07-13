@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import basemod.BaseMod;
 import engineer.BasicMod;
 import engineer.EngineerCharacter;
 
@@ -21,12 +22,12 @@ public class ProgrammerPower extends BasePower {
         if (owner instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)owner;
             if (engineer.program.commands.size() == 0) {
-                return " NL Empty";
+                return " NL Empty"; // TODO
             } else {
                 return " NL " + engineer.program.repr();
             }
         }
-        return " NL Empty";
+        return " NL Empty"; //
     }
 
     @Override

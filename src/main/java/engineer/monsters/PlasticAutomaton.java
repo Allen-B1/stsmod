@@ -6,6 +6,6 @@ public class PlasticAutomaton extends Automaton {
     public final static String ID = makeID("plastic");
 
     public PlasticAutomaton() {
-        super(ID, "Plastic Automaton", 4);
+        super(ID, "Plastic Automaton", 4); // TODO
     }
 }

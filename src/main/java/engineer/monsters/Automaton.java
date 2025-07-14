@@ -54,11 +54,8 @@ public abstract class Automaton extends AbstractMonster {
                     AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
                 }
             }),
-            new AutomatonButton("remove", "Remove | 1 [E]", () -> ("Kill " + makeGreen(this.name)), () -> {
-                if (EnergyPanel.totalCount > 0) {
-                    this.die();
-                    AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(1));
-                }
+            new AutomatonButton("remove", "Remove | 0 [E]", () -> ("Kill " + makeGreen(this.name)), () -> {
+                this.die();
             })
         };
     }

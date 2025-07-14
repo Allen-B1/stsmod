@@ -127,7 +127,7 @@ public class EngineerCharacter extends CustomPlayer {
             }
             );
         initializeClass(characterPath("engineer.png"), characterPath("shoulder.png"), characterPath("shoulder2.png"), 
-            characterPath("corpse.png"), getLoadout(), 0f, 0f, 384f, 384f,
+            characterPath("corpse.png"), getLoadout(), 0f, 0f, 320f, 320f,
             new EnergyManager(3));
 
         dialogX = (drawX + 0.0F * Settings.scale);

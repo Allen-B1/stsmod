@@ -31,8 +31,11 @@ public class AttackAttackCard extends EngineerCard {
     @Override
     public void upgrade() {
         super.upgrade();
-        upgradeDamage(2);
-        upgradeMagicNumber(2);
+
+        if (!upgraded) {
+            upgradeDamage(2);
+            upgradeMagicNumber(2);    
+        }
     }
     
     @Override

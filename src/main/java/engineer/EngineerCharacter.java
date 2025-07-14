@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -357,37 +358,33 @@ public class EngineerCharacter extends CustomPlayer {
         List<AbstractCreature> targets = Arrays.asList(automatons).stream().filter(x -> x != null).collect(Collectors.toList());
         targets.add(this);
 
-        Function<AbstractCreature, Integer> score = (target) -> {
-            int output = info.output - target.currentBlock;
-            if (output >= target.currentHealth) {
-                output = target.currentHealth + 8;
+        BiFunction<AbstractCreature, Integer, Integer> score = (target, dmg) -> {
+            if (dmg <= target.currentBlock) {
+                return Integer.MIN_VALUE;
             }
-            if (output < 0) {
-                output = 0;
+            
+            int creatureValue = 1; // player value
+            if (target instanceof Automaton) {
+                Automaton auto = (Automaton)target;
+                creatureValue = 2*auto.getProgram().commands.size();
             }
 
-            return output;
+            int scoreValue = creatureValue - target.currentBlock;
+            if (dmg >= target.currentHealth + target.currentBlock) {
+                scoreValue += creatureValue;
+            }
+            return scoreValue;
         };
 
-        targets.sort((a, b) -> {
-            int i = score.apply(b) - score.apply(a);
-            if (i != 0) {
-                return i;
-            }
-
-            // prioritize automata among equal scores
-            if (a == this) {
-                return 1;
-            } else if (b == this) {
-                return -1;
-            } else {
-                return 0;
-            }
-        });
-
         int damageRemaining = info.output;
-        for (AbstractCreature target : targets) {
+        for (;;) {
             if (damageRemaining <= 0) {
+                break;
+            }
+
+            final int dmg = damageRemaining;
+            AbstractCreature target = targets.stream().max((a, b) -> score.apply(a, dmg) - score.apply(b, dmg)).get();
+            if (target == null) {
                 break;
             }
 
@@ -397,7 +394,7 @@ public class EngineerCharacter extends CustomPlayer {
             } else {
                 super.damage(new DamageInfo(info.owner, damageDealt, info.type));
             }
-            damageRemaining -= target.currentHealth + target.currentBlock;
+            damageRemaining -= damageDealt;
         }
     }
 }

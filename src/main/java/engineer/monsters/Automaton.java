@@ -59,6 +59,10 @@ public abstract class Automaton extends AbstractMonster {
             })
         };
     }
+
+    public Program getProgram() {
+        return program;
+    }
     
     @Override
     public void render(SpriteBatch sb) {

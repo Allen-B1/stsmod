@@ -26,6 +26,10 @@
     "NAME": "Attack and Attack",
     "DESCRIPTION": "Deal !D! damage. NL [#00ff00]Program[] ${modID}:Attack !M!."
   },
+  "${modID}:collect" : {
+    "NAME": "Collect",
+    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card for each Automaton in play."
+  },
   "${modID}:tazer": {
     "NAME": "Tazer",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M! Vulnerable."
@@ -44,5 +48,9 @@
     "NAME": "Jack of all Trades",
     "DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel."
+  },
+  "${modID}:forcereboot": {
+    "NAME": "Force Reboot",
+    "DESCRIPTION": "The first Automaton activated each turn is reactivated !M! times."
   }
 }

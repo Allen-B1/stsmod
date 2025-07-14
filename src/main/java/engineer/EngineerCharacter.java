@@ -387,6 +387,7 @@ public class EngineerCharacter extends CustomPlayer {
             if (target == null) {
                 break;
             }
+            targets.remove(target);
 
             int damageDealt = Math.min(damageRemaining, target.currentHealth + target.currentBlock);
             if (target != this) {

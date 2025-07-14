@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -355,7 +356,7 @@ public class EngineerCharacter extends CustomPlayer {
             return;
         }
 
-        List<AbstractCreature> targets = Arrays.asList(automatons).stream().filter(x -> x != null).collect(Collectors.toList());
+        Set<AbstractCreature> targets = Arrays.asList(automatons).stream().filter(x -> x != null).collect(Collectors.toSet());
         targets.add(this);
 
         BiFunction<AbstractCreature, Integer, Integer> score = (target, dmg) -> {

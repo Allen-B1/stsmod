@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.badlogic.gdx.graphics.Color;
@@ -46,11 +47,13 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.AbstractAnimation;
 import basemod.animations.SpriterAnimation;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostBattleSubscriber;
 import engineer.cards.BuildCard;
 import engineer.cards.DirectCard;
+import engineer.cards.common.DownloadCard;
 import engineer.cards.common.FrenzyCard;
 import engineer.monsters.Automaton;
 import engineer.powers.ProgrammerPower;
@@ -113,9 +116,16 @@ public class EngineerCharacter extends CustomPlayer {
     public EngineerCharacter() {
         super(NAMES[0], Meta.ENGINEER_CHARACTER, 
             new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds),            
-            new SpriterAnimation(characterPath("animation/default.scml")));
-        initializeClass(null, characterPath("shoulder.png"), characterPath("shoulder2.png"), 
-            characterPath("corpse.png"), getLoadout(), 20f, -20f, 200f, 250f,
+            // new SpriterAnimation(characterPath("animation/default.scml"))
+            new AbstractAnimation() {
+                @Override
+                public Type type() {
+                    return Type.NONE;
+                }
+            }
+            );
+        initializeClass(characterPath("engineer.png"), characterPath("shoulder.png"), characterPath("shoulder2.png"), 
+            characterPath("corpse.png"), getLoadout(), 0f, 0f, 384f, 384f,
             new EnergyManager(3));
 
         dialogX = (drawX + 0.0F * Settings.scale);
@@ -132,7 +142,7 @@ public class EngineerCharacter extends CustomPlayer {
 
         deck.add(BuildCard.ID);
         deck.add(DirectCard.ID);
-        deck.add(FrenzyCard.ID);
+        deck.add(DownloadCard.ID);
         return deck;
     }
 
@@ -239,7 +249,7 @@ public class EngineerCharacter extends CustomPlayer {
                 automaton.showHealthBar();
 
                 automatons[i] = automaton;
-                automaton.drawX = this.drawX + this.hb_w + 32 * Settings.scale;
+                automaton.drawX = this.drawX + this.hb_w;
                 automaton.drawY = this.drawY + Settings.scale*(192*i - 64);
 
                 automaton.setOnDeath(auto -> relinquishAutomaton(auto));
@@ -344,38 +354,50 @@ public class EngineerCharacter extends CustomPlayer {
             return;
         }
 
-        AbstractMonster source = (AbstractMonster)info.owner;
         List<AbstractCreature> targets = Arrays.asList(automatons).stream().filter(x -> x != null).collect(Collectors.toList());
         targets.add(this);
 
-        int[] scores = new int[targets.size()];
-        for (int i = 0; i < targets.size(); i++) {
-            int output = info.output - targets.get(i).currentBlock;
-            if (output >= targets.get(i).currentHealth) {
-                output = targets.get(i).currentHealth;
-                output += (targets.get(i).maxHealth <= 12 ? 3 : targets.get(i).maxHealth / 4); // bonus for killing enemy
+        Function<AbstractCreature, Integer> score = (target) -> {
+            int output = info.output - target.currentBlock;
+            if (output >= target.currentHealth) {
+                output = target.currentHealth + 8;
             }
             if (output < 0) {
                 output = 0;
             }
 
-            scores[i] = output;
-        }
+            return output;
+        };
 
-        int maxScore = -1;
-        int maxScoreIdx = -1;
-        for (int i = 0; i < scores.length; i++) {
-            if (scores[i] > maxScore) {
-                maxScore = scores[i];
-                maxScoreIdx = i;
+        targets.sort((a, b) -> {
+            int i = score.apply(b) - score.apply(a);
+            if (i != 0) {
+                return i;
             }
-        }
 
-        if (targets.get(maxScoreIdx) == this) {
-            super.damage(info);
-            return;
-        }
+            // prioritize automata among equal scores
+            if (a == this) {
+                return 1;
+            } else if (b == this) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
 
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(targets.get(maxScoreIdx), info, AbstractGameAction.AttackEffect.NONE));
+        int damageRemaining = info.output;
+        for (AbstractCreature target : targets) {
+            if (damageRemaining <= 0) {
+                break;
+            }
+
+            int damageDealt = Math.min(damageRemaining, target.currentHealth + target.currentBlock);
+            if (target != this) {
+                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(info.owner, damageDealt, info.type), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            } else {
+                super.damage(new DamageInfo(info.owner, damageDealt, info.type));
+            }
+            damageRemaining -= target.currentHealth + target.currentBlock;
+        }
     }
 }

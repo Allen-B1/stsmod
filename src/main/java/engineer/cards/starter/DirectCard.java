@@ -1,4 +1,4 @@
-package engineer.cards;
+package engineer.cards.starter;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import engineer.BasicMod;
 import engineer.EngineerCharacter;
 import engineer.Program;
+import engineer.cards.EngineerCard;
 import engineer.monsters.Automaton;
 import engineer.monsters.WoodenAutomaton;
 

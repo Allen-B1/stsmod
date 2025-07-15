@@ -1,4 +1,4 @@
-package engineer.cards;
+package engineer.cards.starter;
 
 import static engineer.BasicMod.makeID;
 
@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import engineer.EngineerCharacter;
 import engineer.Program;
+import engineer.cards.EngineerCard;
 import engineer.monsters.Automaton;
 import engineer.monsters.WoodenAutomaton;
 
@@ -19,7 +20,6 @@ public class BuildCard extends EngineerCard {
 
     public BuildCard() {
         super(ID, cost, type, rarity, target);
-        upgradedCost = true;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class BuildCard extends EngineerCard {
             EngineerCharacter engineer = (EngineerCharacter)player;
 
             Automaton automaton = new WoodenAutomaton();
-            automaton.setProgram(engineer.consumeProgram(), engineer);
+            automaton.setProgram(upgraded ? engineer.program.copy() : engineer.consumeProgram(), engineer);
             engineer.addAutomaton(automaton);
         }
     }

@@ -22,6 +22,6 @@ public class GeneralUtils {
     }
 
     public static String makeGreen(String text) {
-        return "[#00ff00]" + String.join(" [#00ff00]", Arrays.asList(text.split(" "))) + "[]";
+        return "[#00ff00]" + String.join(" [#d4ff00]", Arrays.asList(text.split(" "))) + "[]";
     }
 }

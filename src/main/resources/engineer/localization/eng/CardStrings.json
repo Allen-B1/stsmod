@@ -1,7 +1,8 @@
 {
   "${modID}:build": {
     "NAME": "Build",
-    "DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Consume the [#00ff00]Program[].",
+    "DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Consume the [#d4ff00]Program[].",
+    "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Wooden. NL ${modID}:Copy the [#d4ff00]Program[].",
     "EXTENDED_DESCRIPTION": [
       "You can put more text in here.",
       "If you need to use it for stuff.",
@@ -10,21 +11,25 @@
   },
   "${modID}:direct" : {
     "NAME": "Direct",
-    "DESCRIPTION": "[#00ff00]Program[] ${modID}:Attack 6."
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Attack 6."
   },
 
   "${modID}:download": {
     "NAME": "Download",
-    "DESCRIPTION": "Build 1 ${modID}:Plastic."
+    "DESCRIPTION": "Build 1 ${modID}:Plastic. ${modID}:Copy the [#d4ff00]Program[]."
   },
   "${modID}:frenzy": {
     "NAME": "Mass Production",
-    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL ${modID}:Consume the [#00ff00]Program[]."
+    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL ${modID}:Consume the [#d4ff00]Program[]."
+  },
+  "${modID}:swarf": {
+    "NAME": "Swarf",
+    "DESCRIPTION": "Deal !D! damage. NL Build a ${modID}:Steel. NL ${modID}:Consume the [#d4ff00]Program[]."
   },
 
   "${modID}:attackattack" : {
     "NAME": "Attack and Attack",
-    "DESCRIPTION": "Deal !D! damage. NL [#00ff00]Program[] ${modID}:Attack !M!."
+    "DESCRIPTION": "Deal !D! damage. NL [#d4ff00]Program[] ${modID}:Attack !M!."
   },
   "${modID}:collect" : {
     "NAME": "Collect",
@@ -36,21 +41,17 @@
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "!B! Block. NL [#00ff00]Program[] ${modID}:Defense 5.",
-    "UPGRADE_DESCRIPTION": "!B! Block. NL [#00ff00]Program[] ${modID}:Defense 5. NL [#00ff00]Program[] ${modID}:Weaken."
+    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5.",
+    "UPGRADE_DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5. NL [#d4ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {
     "NAME": "Fortress",
-    "DESCRIPTION": "[#00ff00]Program[] ${modID}:Defense 12. Build 1 ${modID}:Steel."
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defense 12. Build 1 ${modID}:Steel."
   },
   "${modID}:jack": {
     "NAME": "Jack of all Trades",
     "DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel."
-  },
-  "${modID}:forcereboot": {
-    "NAME": "Force Reboot",
-    "DESCRIPTION": "The first Automaton activated each turn is reactivated !M! times."
   }
 }

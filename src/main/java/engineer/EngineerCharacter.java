@@ -53,10 +53,10 @@ import basemod.animations.AbstractAnimation;
 import basemod.animations.SpriterAnimation;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostBattleSubscriber;
-import engineer.cards.BuildCard;
-import engineer.cards.DirectCard;
-import engineer.cards.common.DownloadCard;
+import engineer.cards.common.SwarfCard;
 import engineer.cards.common.FrenzyCard;
+import engineer.cards.starter.BuildCard;
+import engineer.cards.starter.DirectCard;
 import engineer.monsters.Automaton;
 import engineer.powers.ProgrammerPower;
 import engineer.relics.Blueprint;
@@ -144,7 +144,7 @@ public class EngineerCharacter extends CustomPlayer {
 
         deck.add(BuildCard.ID);
         deck.add(DirectCard.ID);
-        deck.add(DownloadCard.ID);
+        deck.add(SwarfCard.ID);
         return deck;
     }
 

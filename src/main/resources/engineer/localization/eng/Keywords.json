@@ -18,7 +18,12 @@
   {
     "PROPER_NAME": "Consume",
     "NAMES": ["consume"],
-    "DESCRIPTION": "Remove all commands from the Program."
+    "DESCRIPTION": "Add the [#d4ff00]Program[] to the Automaton. NL Remove all commands from the [#d4ff00]Program[]."
+  },
+  {
+    "PROPER_NAME": "Copy",
+    "NAMES": ["copy"],
+    "DESCRIPTION": "Copy the [#d4ff00]Program[] to the Automaton."
   },
   {
     "PROPER_NAME": "Attack (Command)",

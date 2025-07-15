@@ -36,7 +36,7 @@
     "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
   },
   "${modID}:tazer": {
-    "NAME": "Tazer",
+    "NAME": "Taser",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M! Vulnerable."
   },
   "${modID}:missiles": {
@@ -58,7 +58,7 @@
   },
   "${modID}:codebloat": {
     "NAME": "Code Bloat",
-    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defense 4. NL [#d4ff00]Program[] ${modID}:Attack 4. NL [#d4ff00]Program[] ${modID}:Weaken."
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Spray 4. NL [#d4ff00]Program[] ${modID}:Defense 4. NL [#d4ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {

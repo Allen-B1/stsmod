@@ -16,7 +16,7 @@
 
   "${modID}:download": {
     "NAME": "Download",
-    "DESCRIPTION": "Build 1 ${modID}:Plastic. ${modID}:Copy the [#d4ff00]Program[]."
+    "DESCRIPTION": "Build 1 ${modID}:Plastic. NL ${modID}:Copy the [#d4ff00]Program[]."
   },
   "${modID}:frenzy": {
     "NAME": "Mass Production",
@@ -31,13 +31,26 @@
     "NAME": "Attack and Attack",
     "DESCRIPTION": "Deal !D! damage. NL [#d4ff00]Program[] ${modID}:Attack !M!."
   },
-  "${modID}:collect" : {
-    "NAME": "Collect",
-    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card for each Automaton in play."
+  "${modID}:machinegun" : {
+    "NAME": "Machine Gun",
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
   },
   "${modID}:tazer": {
     "NAME": "Tazer",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M! Vulnerable."
+  },
+  "${modID}:missiles": {
+    "NAME": "Missiles",
+    "DESCRIPTION": "Deal !D! damage to all enemies twice."
+  },
+  "${modID}:needles": {
+    "NAME": "Hypodermic Needles",
+    "DESCRIPTION": "Deal !D! damage to all enemies !M! times. NL Apply 1 Weak to all enemies."
+  },
+
+  "${modID}:collect" : {
+    "NAME": "Collect",
+    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card for each Automaton in play."
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",

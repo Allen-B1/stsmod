@@ -58,7 +58,7 @@
   },
   "${modID}:codebloat": {
     "NAME": "Code Bloat",
-    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defend 4. NL [#d4ff00]Program[] ${modID}:Attack 4. NL [#d4ff00]Program[] ${modID}:Weaken."
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defense 4. NL [#d4ff00]Program[] ${modID}:Attack 4. NL [#d4ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {

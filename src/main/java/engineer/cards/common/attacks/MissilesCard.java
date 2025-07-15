@@ -25,7 +25,6 @@ public class MissilesCard extends EngineerCard {
     public MissilesCard() {
         super(ID, cost, type, rarity, target);
         baseDamage = 7;
-        upgradedDamage = true;
         isMultiDamage = true;
     }
 

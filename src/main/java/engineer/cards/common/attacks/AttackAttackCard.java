@@ -24,8 +24,6 @@ public class AttackAttackCard extends EngineerCard {
         super(ID, cost, type, rarity, target);
         baseDamage = 7;
         baseMagicNumber = magicNumber = 4;
-        upgradedDamage = true;
-        upgradedMagicNumber = true;
     }
 
     @Override

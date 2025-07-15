@@ -25,7 +25,6 @@ public class SwarfCard extends EngineerCard {
     public SwarfCard() {
         super(ID, cost, type, rarity, target);
         baseDamage = 6;
-        upgradedDamage = true;
     }
 
     @Override

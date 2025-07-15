@@ -27,7 +27,6 @@ public class FrenzyCard extends EngineerCard {
     public FrenzyCard() {
         super(ID, cost, type, rarity, target);
         baseMagicNumber = magicNumber = 3;
-        upgradedMagicNumber = true;
     }
 
     @Override

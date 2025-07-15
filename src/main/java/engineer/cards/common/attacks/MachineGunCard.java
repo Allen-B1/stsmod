@@ -25,7 +25,6 @@ public class MachineGunCard extends EngineerCard {
         super(ID, cost, type, rarity, target);
         baseDamage = 2;
         baseMagicNumber = magicNumber = 4;
-        upgradedMagicNumber = true;
     }
 
     @Override

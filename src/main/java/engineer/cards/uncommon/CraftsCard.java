@@ -22,13 +22,14 @@ public class CraftsCard extends EngineerCard {
 
     public CraftsCard() {
         super(ID, cost, type, rarity, target);
+        baseMagicNumber = magicNumber = 1;
         exhaust = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-        exhaust = false;
+        upgradeMagicNumber(1);   
     }
 
     @Override
@@ -37,11 +38,21 @@ public class CraftsCard extends EngineerCard {
             EngineerCharacter engineer = (EngineerCharacter)player;
             Program program = engineer.consumeProgram();
 
-            Automaton[] autos = new Automaton[] {
-                new PlasticAutomaton(),
-                new WoodenAutomaton(),
-                new SteelAutomaton()
-            };
+            Automaton[] autos;
+            if (upgraded) {
+                autos = new Automaton[] {
+                    new PlasticAutomaton(),
+                    new WoodenAutomaton(),
+                    new SteelAutomaton()
+                };
+            } else {
+                autos = new Automaton[] {
+                    new PlasticAutomaton(), new PlasticAutomaton(),
+                    new WoodenAutomaton(), new WoodenAutomaton(),
+                    new SteelAutomaton()
+                };
+            }
+
             for (Automaton auto : autos) {
                 auto.setProgram(program, engineer);
                 engineer.addAutomaton(auto);    

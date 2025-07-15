@@ -22,8 +22,6 @@ public class TazerCard extends EngineerCard {
         super(ID, cost, type, rarity, target);
         baseDamage = 5;
         baseMagicNumber = magicNumber = 1;
-        upgradedDamage = true;
-        upgradedMagicNumber = true;
     }
 
     @Override

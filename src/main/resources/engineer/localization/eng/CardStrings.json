@@ -24,7 +24,7 @@
   },
   "${modID}:swarf": {
     "NAME": "Swarf",
-    "DESCRIPTION": "Deal !D! damage. NL Build a ${modID}:Steel. NL ${modID}:Consume the [#d4ff00]Program[]."
+    "DESCRIPTION": "Deal !D! damage. NL Build 1 ${modID}:Steel. NL ${modID}:Consume the [#d4ff00]Program[]."
   },
 
   "${modID}:attackattack" : {
@@ -54,7 +54,7 @@
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5."
+    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense !M!."
   },
   "${modID}:codebloat": {
     "NAME": "Code Bloat",
@@ -67,10 +67,10 @@
   },
   "${modID}:crafts": {
     "NAME": "Craftsmanship",
-    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL Build !M! ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust."
+    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL Build !M! ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL ${modID}:Consume the [#d4ff00]Program[]. NL Exhaust."
   },
   "${modID}:bomb": {
     "NAME": "Bomb",
-    "DESCRIPTION": "Gain !B! Block. Program ${modID}:Explode."
+    "DESCRIPTION": "Gain !B! Block. NL Program ${modID}:Explode."
   }
 }

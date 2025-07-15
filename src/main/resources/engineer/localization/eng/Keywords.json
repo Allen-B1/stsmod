@@ -48,7 +48,7 @@
   {
     "PROPER_NAME": "Explode (Command)",
     "NAMES": ["explode", "Explode"],
-    "DESCRIPTION": "Die. Deal 24 damage to all enemies."
+    "DESCRIPTION": "Die. Deal #b24 damage to all enemies."
   },
   {
     "PROPER_NAME": "This is displayed in the tooltip.",

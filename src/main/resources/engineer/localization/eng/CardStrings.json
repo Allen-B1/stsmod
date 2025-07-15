@@ -71,6 +71,6 @@
   },
   "${modID}:bomb": {
     "NAME": "Bomb",
-    "DESCRIPTION": "Gain !B! Block. NL Program ${modID}:Explode."
+    "DESCRIPTION": "Gain !B! Block. NL [#d4ff00]Program[] ${modID}:Explode."
   }
 }

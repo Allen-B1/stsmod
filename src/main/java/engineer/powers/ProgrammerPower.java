@@ -22,12 +22,12 @@ public class ProgrammerPower extends BasePower {
         if (owner instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)owner;
             if (engineer.program.commands.size() == 0) {
-                return " NL Empty"; // TODO
+                return "Empty"; // TODO
             } else {
-                return " NL " + engineer.program.repr();
+                return engineer.program.repr();
             }
         }
-        return " NL Empty"; //
+        return "Empty"; //
     }
 
     @Override

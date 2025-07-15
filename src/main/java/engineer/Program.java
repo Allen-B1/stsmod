@@ -1,12 +1,16 @@
 package engineer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -114,6 +118,27 @@ public class Program {
         }
     }
 
+    public static class ExplodeCommand implements Command {
+        public ExplodeCommand() {}
+
+        @Override
+        public void execute(Automaton source, EngineerCharacter player) {
+            AbstractDungeon.actionManager.addToBottom(new InstantKillAction(source));
+
+            MonsterGroup monsters = AbstractDungeon.getMonsters();
+            for (AbstractMonster target : monsters.monsters) {
+                DamageInfo info = new DamageInfo(null, 24, DamageInfo.DamageType.NORMAL);
+                info.applyPowers(source, target);
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info, AttackEffect.FIRE));
+            }
+        }
+
+        @Override
+        public String repr() {
+            return "Explode";
+        }
+    }
+
     public ArrayList<Command> commands;
 
     public Program() {
@@ -122,6 +147,15 @@ public class Program {
 
     public void add(Command command) {
         commands.add(command);
+        reorder();
+    }
+
+    protected void reorder() {
+        Set<Command> explodes = commands.stream().filter(x -> x instanceof ExplodeCommand).collect(Collectors.toSet());
+        for (Command cmd : explodes) {
+            commands.remove(cmd);
+            commands.add(cmd);
+        }
     }
 
     public Program copy() {
@@ -131,6 +165,6 @@ public class Program {
     }
 
     public String repr() {
-        return String.join(" NL ", this.commands.stream().map(x -> x.repr()).collect(Collectors.toList()));
+        return "- " + String.join(" NL - ", this.commands.stream().map(x -> x.repr()).collect(Collectors.toList()));
     }
 }

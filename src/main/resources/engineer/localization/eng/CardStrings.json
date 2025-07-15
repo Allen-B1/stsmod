@@ -68,5 +68,9 @@
   "${modID}:crafts": {
     "NAME": "Craftsmanship",
     "DESCRIPTION": "Build !M! ${modID}:Plastic. NL Build !M! ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust."
+  },
+  "${modID}:bomb": {
+    "NAME": "Bomb",
+    "DESCRIPTION": "Gain !B! Block. Program ${modID}:Explode."
   }
 }

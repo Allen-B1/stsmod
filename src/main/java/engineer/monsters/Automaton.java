@@ -118,7 +118,10 @@ public abstract class Automaton extends AbstractMonster {
     public boolean activate(boolean force) {
         if (!activatedThisTurn || force) {
             for (Program.Command cmd : program.commands) {
-                cmd.execute(this, owner);  
+                if (this.isDead) {
+                    break;
+                }
+                cmd.execute(this, owner);
             }
 
             activatedThisTurn = true;

@@ -50,21 +50,23 @@
 
   "${modID}:collect" : {
     "NAME": "Collect",
-    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card for each Automaton in play."
+    "DESCRIPTION": "Gain !B! Block. NL Draw 1 card for each unique Automaton in play."
   },
   "${modID}:defensesystem" : {
     "NAME": "Defense System",
-    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5.",
-    "UPGRADE_DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5. NL [#d4ff00]Program[] ${modID}:Weaken."
+    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense 5."
+  },
+  "${modID}:codebloat": {
+    "NAME": "Code Bloat",
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defend 4. NL [#d4ff00]Program[] ${modID}:Attack 4. NL [#d4ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {
     "NAME": "Fortress",
     "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defense 12. Build 1 ${modID}:Steel."
   },
-  "${modID}:jack": {
-    "NAME": "Jack of all Trades",
-    "DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Build 1 ${modID}:Plastic. NL Build 1 ${modID}:Wooden. NL Build 1 ${modID}:Steel."
+  "${modID}:crafts": {
+    "NAME": "Craftsmanship",
+    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL Build !M! ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL Exhaust."
   }
 }

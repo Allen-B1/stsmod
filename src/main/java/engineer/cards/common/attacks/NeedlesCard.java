@@ -27,7 +27,6 @@ public class NeedlesCard extends EngineerCard {
         super(ID, cost, type, rarity, target);
         baseDamage = 1;
         baseMagicNumber = magicNumber = 3;
-        upgradedMagicNumber = true;
         isMultiDamage = true;
     }
 

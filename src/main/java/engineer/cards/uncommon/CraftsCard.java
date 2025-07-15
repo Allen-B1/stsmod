@@ -13,14 +13,14 @@ import engineer.monsters.PlasticAutomaton;
 import engineer.monsters.SteelAutomaton;
 import engineer.monsters.WoodenAutomaton;
 
-public class JackOfAllTrades extends EngineerCard {
-    public final static String ID = makeID("jack");
+public class CraftsCard extends EngineerCard {
+    public final static String ID = makeID("crafts");
     public final static int cost = 2;
     public final static CardType type = CardType.SKILL;
     public final static CardRarity rarity = CardRarity.UNCOMMON;
     public final static CardTarget target = CardTarget.NONE;
 
-    public JackOfAllTrades() {
+    public CraftsCard() {
         super(ID, cost, type, rarity, target);
         exhaust = true;
     }

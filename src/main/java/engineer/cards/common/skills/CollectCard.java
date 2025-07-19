@@ -1,3 +1,4 @@
+/*
 package engineer.cards.common.skills;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -43,3 +44,4 @@ public class CollectCard extends EngineerCard {
         }
     }
 }
+*/

@@ -1,4 +1,4 @@
-package engineer.cards.common.skills;
+package engineer.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -8,46 +8,35 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
-import basemod.BaseMod;
 import engineer.BasicMod;
 import engineer.EngineerCharacter;
 import engineer.Program;
 import engineer.cards.EngineerCard;
-import engineer.monsters.Automaton;
-import engineer.monsters.PlasticAutomaton;
-import engineer.monsters.SteelAutomaton;
 
-public class FrenzyCard extends EngineerCard {
-    public final static String ID = BasicMod.makeID("frenzy");
-    public final static int cost = 2;
+public class DeadlyLaserCard extends EngineerCard {
+    public final static String ID = BasicMod.makeID("deadlylaser");
+    public final static int cost = 1;
     public final static CardType type = CardType.SKILL;
     public final static CardRarity rarity = CardRarity.COMMON;
     public final static CardTarget target = CardTarget.NONE;
 
-    public FrenzyCard() {
+    public DeadlyLaserCard() {
         super(ID, cost, type, rarity, target);
-        baseMagicNumber = magicNumber = 3;
+        baseMagicNumber = magicNumber = 12;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-        upgradeMagicNumber(1);
-    }
 
+        upgradeMagicNumber(4);
+    }
+    
     @Override
     public void use(AbstractPlayer player, AbstractMonster enemy) {
-        BaseMod.logger.info("magicNumber : " + magicNumber + " / " + baseMagicNumber);
-
         if (player instanceof EngineerCharacter) {
             EngineerCharacter engineer = (EngineerCharacter)player;
-
-            Program program = engineer.consumeProgram();
-            for (int i = 0; i < magicNumber; i++) {
-                Automaton automaton = new PlasticAutomaton();
-                automaton.setProgram(program, engineer);    
-                engineer.addAutomaton(automaton);
-            }
+            engineer.program.add(new Program.AttackCommand(magicNumber));
         }
     }
 }

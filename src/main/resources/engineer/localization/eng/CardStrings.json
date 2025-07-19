@@ -31,6 +31,19 @@
     "NAME": "Attack and Attack",
     "DESCRIPTION": "Deal !D! damage. NL [#d4ff00]Program[] ${modID}:Attack !M!."
   },
+  "${modID}:defensesystem" : {
+    "NAME": "Defense System",
+    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense !M!."
+  },
+  "${modID}:dartlauncher": {
+    "NAME": "Dart Launcher",
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Spray 5. NL [#d4ff00]Program[] ${modID}:Weaken."
+  },
+  "${modID}:deadlylaser": {
+    "NAME": "Deadly Laser",
+    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Attack !M!."
+  },
+
   "${modID}:machinegun" : {
     "NAME": "Machine Gun",
     "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
@@ -42,23 +55,6 @@
   "${modID}:missiles": {
     "NAME": "Missiles",
     "DESCRIPTION": "Deal !D! damage to all enemies twice."
-  },
-  "${modID}:needles": {
-    "NAME": "Hypodermic Needles",
-    "DESCRIPTION": "Deal !D! damage to all enemies !M! times. NL Apply 1 Weak to all enemies."
-  },
-
-  "${modID}:collect" : {
-    "NAME": "Collect",
-    "DESCRIPTION": "Gain !B! Block. NL Draw 1 card for each unique Automaton in play."
-  },
-  "${modID}:defensesystem" : {
-    "NAME": "Defense System",
-    "DESCRIPTION": "!B! Block. NL [#d4ff00]Program[] ${modID}:Defense !M!."
-  },
-  "${modID}:codebloat": {
-    "NAME": "Code Bloat",
-    "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Spray 4. NL [#d4ff00]Program[] ${modID}:Defense 4. NL [#d4ff00]Program[] ${modID}:Weaken."
   },
 
   "${modID}:fortress": {

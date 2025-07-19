@@ -56,14 +56,14 @@
     "NAME": "Missiles",
     "DESCRIPTION": "Deal !D! damage to all enemies twice."
   },
+  "${modID}:shield": {
+    "NAME": "Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Plated Armor."
+  },
 
   "${modID}:fortress": {
     "NAME": "Fortress",
     "DESCRIPTION": "[#d4ff00]Program[] ${modID}:Defense 12. Build 1 ${modID}:Steel."
-  },
-  "${modID}:crafts": {
-    "NAME": "Craftsmanship",
-    "DESCRIPTION": "Build !M! ${modID}:Plastic. NL Build !M! ${modID}:Wooden. NL Build 1 ${modID}:Steel. NL ${modID}:Consume the [#d4ff00]Program[]. NL Exhaust."
   },
   "${modID}:bomb": {
     "NAME": "Bomb",

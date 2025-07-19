@@ -28,7 +28,7 @@
   {
     "PROPER_NAME": "Attack (Command)",
     "NAMES": ["attack", "Attack"],
-    "DESCRIPTION": "Attack a random enemy for #bX."
+    "DESCRIPTION": "Attack the lowest HP enemy for #bX."
   },
   {
     "PROPER_NAME": "Defense (Command)",

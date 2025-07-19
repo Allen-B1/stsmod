@@ -35,10 +35,15 @@ public class Program {
 
         @Override
         public void execute(Automaton source, EngineerCharacter player) {
-            AbstractMonster target = AbstractDungeon.getRandomMonster();
-            DamageInfo info = new DamageInfo(source, dmg, DamageInfo.DamageType.NORMAL);
-            info.applyPowers(source, target);
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info));
+            AbstractMonster target = AbstractDungeon.getMonsters().monsters.stream().max((a, b) -> {
+                return a.currentHealth - b.currentHealth;
+            }).get();
+
+            if (target != null) {
+                DamageInfo info = new DamageInfo(source, dmg, DamageInfo.DamageType.NORMAL);
+                info.applyPowers(source, target);
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info, dmg >= 12 ? AttackEffect.SLASH_HEAVY : AttackEffect.SLASH_HORIZONTAL));
+            }
         }
 
         @Override
